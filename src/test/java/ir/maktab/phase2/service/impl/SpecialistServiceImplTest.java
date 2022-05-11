@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.NoSuchElementException;
+
 import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 class SpecialistServiceImplTest {
@@ -16,6 +18,7 @@ class SpecialistServiceImplTest {
     void initial(){
         specialist = new Specialist();
         specialist.setName("Meckanic");
+
     }
 
     @Test
@@ -25,5 +28,17 @@ class SpecialistServiceImplTest {
 
        assertEquals(1,specialist.getId());
 
+    }
+
+
+    @Test
+    void deleteById(){
+       specialist.setId(1);
+       specialistService.delete(specialist);
+
+
+       assertThrows(NoSuchElementException.class,()->{
+           specialistService.findById(1);
+       });
     }
 }

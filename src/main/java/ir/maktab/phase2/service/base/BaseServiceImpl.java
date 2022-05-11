@@ -26,7 +26,8 @@ public class BaseServiceImpl<R extends JpaRepository<E,ID>,E extends BaseEntity<
     @Override
     @Transactional
     public void delete(E e) {
-     repository.delete(e);
+        repository.delete(e);
+
     }
 
     @Override

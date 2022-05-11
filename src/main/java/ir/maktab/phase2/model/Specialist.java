@@ -13,15 +13,15 @@ import java.util.Set;
 @Data
 @Setter
 @Getter
-public class Service extends BaseEntity<Integer> {
+public class Specialist extends BaseEntity<Integer> {
     private String name;
 
 
-    public Service(Integer integer, String name) {
+    public Specialist(Integer integer, String name) {
         super(integer);
         this.name = name;
     }
 
-    public Service() {
+    public Specialist() {
     }
 }

@@ -1,7 +1,6 @@
 package ir.maktab.phase2.model;
 
 import ir.maktab.phase2.model.enumeration.TechnicianStatus;
-import jdk.jfr.Label;
 import org.hibernate.annotations.Formula;
 
 import javax.persistence.*;
@@ -26,7 +25,7 @@ public class Technician extends User {
             joinColumns = { @JoinColumn(name = "technician_id") },
            inverseJoinColumns = { @JoinColumn(name = "sub_service_id") }
     )
-    private List<SubService> services;
+    private List<SubSpecialist> services;
 
     @Lob
     private byte[] image;
@@ -34,7 +33,7 @@ public class Technician extends User {
     @Enumerated(EnumType.STRING)
     private TechnicianStatus technicianStatus;
 
- public Technician(Integer integer, String firstName, String lastName, String email, String passWord, Role role, LocalDateTime creationTime, Double score, Set<Comment> comments, List<SubService> services, byte[] image, TechnicianStatus technicianStatus) {
+ public Technician(Integer integer, String firstName, String lastName, String email, String passWord, Role role, LocalDateTime creationTime, Double score, Set<Comment> comments, List<SubSpecialist> services, byte[] image, TechnicianStatus technicianStatus) {
   super(integer, firstName, lastName, email, passWord, role, creationTime);
   this.score = score;
   this.comments = comments;

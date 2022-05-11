@@ -8,9 +8,6 @@ import org.hibernate.annotations.CreationTimestamp;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Date;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -26,7 +23,7 @@ public class Order extends BaseEntity<Integer> {
 
   @ManyToOne
   @JoinColumn(name = "sub_service_id")
-  private SubService subService;
+  private SubSpecialist subSpecialist;
 
    @CreationTimestamp
    private LocalDateTime submitOrderTime;

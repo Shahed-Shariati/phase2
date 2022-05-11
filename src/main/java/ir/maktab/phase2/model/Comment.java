@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Entity
 public class Comment extends BaseEntity<Integer> {
     private String comment;
-    @ManyToOne()
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "technician_id")
     private Technician technician;
 

@@ -21,6 +21,6 @@ private OfferRepository offerRepository;
 
     @Override
     public Offer find(String duration) {
-        return offerRepository.findByDuration(duration);
+       return null;
     }
 }

@@ -1,6 +1,8 @@
 package ir.maktab.phase2.model;
 
 import ir.maktab.phase2.model.base.BaseEntity;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -8,7 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
 @Entity
-
+@Getter
+@Setter
 public class SubSpecialist extends BaseEntity<Integer> {
 
     @Column(columnDefinition = "varchar(100)")

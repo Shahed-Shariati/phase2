@@ -1,11 +1,15 @@
 package ir.maktab.phase2.model;
 
 import ir.maktab.phase2.model.base.BaseEntity;
+import lombok.Getter;
+import lombok.Setter;
 
 
 import javax.persistence.*;
 
 @Entity
+@Getter
+@Setter
 public class Comment extends BaseEntity<Integer> {
     private String comment;
 

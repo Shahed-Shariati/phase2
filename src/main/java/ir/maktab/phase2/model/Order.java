@@ -12,16 +12,16 @@ import java.util.Set;
 
 
 
-@Getter
-@Setter
+
 @Entity
 @Table(name = "orders")
+
 public class Order extends BaseEntity<Integer> {
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
-  @ManyToOne
+  @ManyToOne(cascade = CascadeType.ALL)
   @JoinColumn(name = "sub_service_id")
   private SubSpecialist subSpecialist;
 
@@ -51,6 +51,62 @@ public class Order extends BaseEntity<Integer> {
     }
 
     public Order() {
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public SubSpecialist getSubSpecialist() {
+        return subSpecialist;
+    }
+
+    public void setSubSpecialist(SubSpecialist subSpecialist) {
+        this.subSpecialist = subSpecialist;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public OrderStatus getOrderStatus() {
+        return orderStatus;
+    }
+
+    public void setOrderStatus(OrderStatus orderStatus) {
+        this.orderStatus = orderStatus;
+    }
+
+    public Double getSuggestPrice() {
+        return suggestPrice;
+    }
+
+    public void setSuggestPrice(Double suggestPrice) {
+        this.suggestPrice = suggestPrice;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     @Override

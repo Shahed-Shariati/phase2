@@ -12,19 +12,18 @@ import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
-@Getter
-@Setter
+
 public class Offer extends BaseEntity<Integer> {
 
     private Double suggestPrice;
 
     private String duration;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "technician_id")
     private Technician technician;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.MERGE)
     private Order order;
 
     @Temporal(TemporalType.DATE)
@@ -90,9 +89,8 @@ public class Offer extends BaseEntity<Integer> {
         return offerTime;
     }
 
-    public void setOfferTime(LocalDateTime submitOfferTime) {
-
-        this.offerTime = submitOfferTime;
+    public void setOfferTime(LocalDateTime offerTime) {
+        this.offerTime = offerTime;
     }
 
     @Override

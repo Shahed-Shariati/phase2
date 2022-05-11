@@ -15,5 +15,17 @@ public class Role extends BaseEntity<Integer> {
     public Role() {
     }
 
+    public Role(Integer integer, String role) {
+        super(integer);
+        this.role = role;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
 }
 

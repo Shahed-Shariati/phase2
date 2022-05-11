@@ -22,8 +22,11 @@ class OfferServiceImplTest {
         Offer offer = new Offer();
         offer.setSuggestPrice(25.6);
         offer.setDuration("gggg");
-        offerService.save(offer);
-        assertEquals(2,offer.getId());
+      //  offerService.save(offer);
+        Offer offer1 = offerService.find("gggg");
+      //  assertEquals(1,offer.getId());
+        System.out.println(offer1);
+        assertEquals("gggg",offer1.getDuration());
     }
 
 }

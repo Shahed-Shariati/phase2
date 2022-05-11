@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 @Entity
 @PrimaryKeyJoinColumn(name = "user_id")
 @Inheritance(strategy = InheritanceType.JOINED)
-public class Customer extends User {
+public class Customer extends Person {
 @OneToOne
 private Wallet wallet;
 

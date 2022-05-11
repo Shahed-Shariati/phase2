@@ -89,6 +89,19 @@ public class Offer extends BaseEntity<Integer> {
     }
 
     public void setSubmitOfferTime(LocalDateTime submitOfferTime) {
+
         this.submitOfferTime = submitOfferTime;
+    }
+
+    @Override
+    public String toString() {
+        return "Offer{" + getId() +
+                "suggestPrice=" + suggestPrice +
+                ", duration='" + duration + '\'' +
+                ", technician=" + technician +
+                ", order=" + order +
+                ", startTime=" + startTime +
+                ", submitOfferTime=" + submitOfferTime +
+                '}';
     }
 }

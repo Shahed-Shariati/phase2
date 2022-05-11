@@ -11,7 +11,7 @@ import java.util.Set;
 @Entity
 @PrimaryKeyJoinColumn(name = "user_id")
 @Inheritance(strategy = InheritanceType.JOINED)
-public class Technician extends User {
+public class Technician extends Person {
 
    @Formula("select avg(c.score) from comment c where c.technician_id = id")
     private Double score;

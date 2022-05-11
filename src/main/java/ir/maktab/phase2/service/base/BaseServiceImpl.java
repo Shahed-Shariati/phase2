@@ -2,6 +2,7 @@ package ir.maktab.phase2.service.base;
 
 import ir.maktab.phase2.model.base.BaseEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.transaction.annotation.Transactional;
 
 
@@ -10,7 +11,7 @@ import java.util.List;
 
 public class BaseServiceImpl<R extends JpaRepository<E,ID>,E extends BaseEntity<ID> , ID extends Serializable> implements BaseService<E,ID>{
 
-    private R repository;
+    protected R repository;
 
     public BaseServiceImpl(R repository) {
         this.repository = repository;
@@ -29,18 +30,15 @@ public class BaseServiceImpl<R extends JpaRepository<E,ID>,E extends BaseEntity<
     }
 
     @Override
-    @Transactional
-    public void update(E e) {
-
+    public List<E> findAll() {
+        return repository.findAll();
     }
+
 
     @Override
     public E findById(ID id) {
         return repository.findById(id).get();
     }
 
-    @Override
-    public List<E> findAll() {
-        return repository.findAll();
-    }
+
 }

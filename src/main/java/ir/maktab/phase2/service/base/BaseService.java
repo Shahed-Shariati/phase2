@@ -13,9 +13,9 @@ public interface BaseService<E extends BaseEntity<ID>, ID extends Serializable> 
 
     void delete(E e);
 
-    void update(E e);
+    List<E> findAll();
 
     E findById(ID id);
 
-    List<E> findAll();
+
 }

@@ -28,4 +28,13 @@ public class SubSpecialist extends BaseEntity<Integer> {
 
     public SubSpecialist() {
     }
+
+    @Override
+    public String toString() {
+        return "SubSpecialist{" +
+                "name='" + name + '\'' +
+                ", parentSpecialist=" + parentSpecialist +
+                ", basePrice=" + basePrice +
+                '}';
+    }
 }

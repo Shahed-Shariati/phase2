@@ -11,7 +11,7 @@ import java.util.Date;
 import java.util.Set;
 
 
-@Data
+
 @Getter
 @Setter
 @Entity
@@ -30,8 +30,7 @@ public class Order extends BaseEntity<Integer> {
 
    private String description;
 
-    @OneToMany(mappedBy = "order",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    private Set<Offer> offers;
+
 
    @Enumerated(EnumType.STRING)
    private OrderStatus orderStatus;
@@ -40,18 +39,31 @@ public class Order extends BaseEntity<Integer> {
 
    private String address;
 
-    public Order(Integer integer, Customer customer, SubSpecialist subSpecialist, Date date, String description, Set<Offer> offers, OrderStatus orderStatus, Double basePrice, String address) {
+    public Order(Integer integer, Customer customer, SubSpecialist subSpecialist, Date date, String description, OrderStatus orderStatus, Double suggestPrice, String address) {
         super(integer);
         this.customer = customer;
         this.subSpecialist = subSpecialist;
         this.date = date;
         this.description = description;
-        this.offers = offers;
         this.orderStatus = orderStatus;
-        this.suggestPrice = basePrice;
+        this.suggestPrice = suggestPrice;
         this.address = address;
     }
 
     public Order() {
+    }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "customer=" + customer +
+                ", subSpecialist=" + subSpecialist +
+                ", date=" + date +
+                ", description='" + description + '\'' +
+                ", offers=" +
+                ", orderStatus=" + orderStatus +
+                ", suggestPrice=" + suggestPrice +
+                ", address='" + address + '\'' +
+                '}';
     }
 }

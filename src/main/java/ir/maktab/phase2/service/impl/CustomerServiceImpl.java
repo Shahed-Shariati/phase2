@@ -11,4 +11,5 @@ public class CustomerServiceImpl extends BaseServiceImpl<CustomerRepository, Cus
     public CustomerServiceImpl(CustomerRepository repository) {
         super(repository);
     }
+
 }

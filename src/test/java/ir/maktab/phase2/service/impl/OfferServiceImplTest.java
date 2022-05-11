@@ -29,4 +29,9 @@ class OfferServiceImplTest {
         assertEquals("gggg",offer1.getDuration());
     }
 
+    @Test
+    void showList(){
+
+    }
+
 }

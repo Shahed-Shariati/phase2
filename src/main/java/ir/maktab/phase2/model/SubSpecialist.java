@@ -10,8 +10,10 @@ import javax.persistence.ManyToOne;
 @Entity
 
 public class SubSpecialist extends BaseEntity<Integer> {
+
     @Column(columnDefinition = "varchar(100)")
     private String name;
+
     @ManyToOne(cascade = CascadeType.ALL)
     private Specialist parentSpecialist;
 

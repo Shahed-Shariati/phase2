@@ -3,8 +3,8 @@ package ir.maktab.phase2.model;
 
 
 import ir.maktab.phase2.model.base.BaseEntity;
-import lombok.Builder;
-import org.hibernate.annotations.Cascade;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
@@ -12,7 +12,8 @@ import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
-
+@Getter
+@Setter
 public class Offer extends BaseEntity<Integer> {
 
     private Double suggestPrice;
@@ -20,25 +21,26 @@ public class Offer extends BaseEntity<Integer> {
     private String duration;
 
     @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "technician_id")
     private Technician technician;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
     private Order order;
 
     @Temporal(TemporalType.DATE)
     private Date startTime;
 
     @CreationTimestamp
-    private LocalDateTime submitOfferTime;
+    private LocalDateTime offerTime;
 
-    public Offer(Integer integer, Double suggestPrice, String duration, Technician technician, Order order, Date startTime, LocalDateTime submitOfferTime) {
+    public Offer(Integer integer, Double suggestPrice, String duration, Technician technician, Order order, Date startTime, LocalDateTime offerTime) {
         super(integer);
         this.suggestPrice = suggestPrice;
         this.duration = duration;
         this.technician = technician;
         this.order = order;
         this.startTime = startTime;
-        this.submitOfferTime = submitOfferTime;
+        this.offerTime = offerTime;
     }
 
     public Offer() {
@@ -84,13 +86,13 @@ public class Offer extends BaseEntity<Integer> {
         this.startTime = startTime;
     }
 
-    public LocalDateTime getSubmitOfferTime() {
-        return submitOfferTime;
+    public LocalDateTime getOfferTime() {
+        return offerTime;
     }
 
-    public void setSubmitOfferTime(LocalDateTime submitOfferTime) {
+    public void setOfferTime(LocalDateTime submitOfferTime) {
 
-        this.submitOfferTime = submitOfferTime;
+        this.offerTime = submitOfferTime;
     }
 
     @Override
@@ -101,7 +103,7 @@ public class Offer extends BaseEntity<Integer> {
                 ", technician=" + technician +
                 ", order=" + order +
                 ", startTime=" + startTime +
-                ", submitOfferTime=" + submitOfferTime +
+                ", submitOfferTime=" + offerTime +
                 '}';
     }
 }

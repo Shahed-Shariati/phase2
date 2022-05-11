@@ -13,7 +13,7 @@ import java.util.Set;
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Technician extends Person {
 
-   @Formula("select avg(c.score) from comment c where c.technician_id = id")
+    @Formula("select avg(c.score) from Comment c where c.technician_id = id")
     private Double score;
 
     @OneToMany(mappedBy = "technician",cascade = CascadeType.ALL)

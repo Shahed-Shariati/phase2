@@ -11,7 +11,7 @@ import java.util.List;
 
 public interface CommentService extends BaseService<Comment,Integer> {
 
-     List<Comment> findAllByExpert(Technician technician);
+
 
 
 }

@@ -61,18 +61,19 @@ class TechnicianServiceImplTest {
     @Test
     void submitOffer() throws ParseException {
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy", Locale.ENGLISH);
-        String dateInString = "7-Jun-2013";
-        Technician technician1 = technicianService.findById(4);
-
-        Order order =  orderService.findById(1);
+        String dateInString = "7-Jun-2022";
+        Technician technician1 = technicianService.findById(3);
+        Order order =  orderService.findById(2);
         System.out.println(order);
         Offer offer = new Offer();
         offer.setOrder(order);
         offer.setTechnician(technician1);
-        offer.setDuration("2 day");
+        offer.setDuration("4 day");
         offer.setStartTime(formatter.parse(dateInString));
-        offer.setSuggestPrice(300d);
-        assertThrows(SuggestPriceUnderBasePrice.class,() -> {technicianService.submitOffer(offer);});
+        offer.setSuggestPrice(15000d);
+        technicianService.submitOffer(offer);
+        assertNotNull(offer.getId());
+
 
 
     }

@@ -10,5 +10,7 @@ import java.util.List;
 public interface CustomerService extends BaseService<Customer,Integer> {
     Order orderSave(Order order,Customer customer);
     List<Offer> showOffer(Integer id , String sort);
+    void selectOffer(Offer offer);
+    List<Order> showCustomerOrders(Integer id);
 
 }

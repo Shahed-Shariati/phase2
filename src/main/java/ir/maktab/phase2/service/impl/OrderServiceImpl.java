@@ -32,4 +32,9 @@ public class OrderServiceImpl extends BaseServiceImpl<OrderRepository, Order,Int
         return orderRepository.upDateOrderStatus(status,id);
     }
 
+    @Override
+    public List<Order> findByCustomerId(Integer id) {
+        return repository.findByCustomer_Id(id);
+    }
+
 }

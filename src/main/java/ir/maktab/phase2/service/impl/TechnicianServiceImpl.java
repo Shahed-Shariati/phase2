@@ -50,6 +50,6 @@ public class TechnicianServiceImpl extends BaseServiceImpl<TechnicianRepository,
       if(suggestPrice < basePriceSubSpecialist)
           throw new SuggestPriceUnderBasePrice();
       offerService.save(offer);
-      orderService.upDateOrderStatus(OrderStatus.waitingExpertSelection,offer.getOrder().getId());
+      orderService.upDateOrderStatus(OrderStatus.waitingTechnicianSelection,offer.getOrder().getId());
     }
 }

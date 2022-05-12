@@ -45,4 +45,18 @@ public class CustomerServiceImpl extends BaseServiceImpl<CustomerRepository, Cus
             return offerService.findOfferSortByPrice(id);
         return null;
     }
+
+    @Override
+    @Transactional
+    public void selectOffer(Offer offer) {
+      Order order = offer.getOrder();
+      orderService.upDateOrderStatus(OrderStatus.waitingTechnicianComing,order.getId());
+    }
+
+    @Override
+    public List<Order> showCustomerOrders(Integer id) {
+        return orderService.findByCustomerId(id);
+    }
+
+
 }

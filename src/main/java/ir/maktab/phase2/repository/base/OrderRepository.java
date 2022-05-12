@@ -18,4 +18,6 @@ public interface OrderRepository extends JpaRepository<Order,Integer> {
     @Modifying
     @Query("update Order o set o.orderStatus = :status where o.id = :id ")
     Integer upDateOrderStatus(@Param("status") OrderStatus status, @Param("id") Integer id);
+
+    List<Order> findByCustomer_Id(Integer id);
 }

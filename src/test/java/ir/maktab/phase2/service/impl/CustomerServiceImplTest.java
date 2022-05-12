@@ -1,6 +1,8 @@
 package ir.maktab.phase2.service.impl;
 
 import ir.maktab.phase2.model.*;
+import ir.maktab.phase2.service.CustomerService;
+import ir.maktab.phase2.service.OfferService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,18 +19,19 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 class CustomerServiceImplTest {
     @Autowired
-    private CustomerServiceImpl customerService;
+    private CustomerService customerService;
     private Customer customer;
+    @Autowired
+    private OfferService offerService;
 
     @BeforeEach
     void initial()
     {
-        Role role = new Role(2,"customer");
+
         customer = new Customer();
         customer.setEmail("sh1");
         customer.setFirstName("ako");
         customer.setLastName("Faraji");
-        customer.setRole(role);
         customer.setId(1);
 
     }
@@ -37,16 +40,9 @@ class CustomerServiceImplTest {
 
     @Test
     void save(){
-        Role role = new Role(2,"customer");
-        customer = new Customer();
-        customer.setEmail("sh1");
-        customer.setFirstName("ako");
-        customer.setLastName("Faraji");
-        customer.setRole(role);
-
         customerService.save(customer);
         Customer findCustomer = customerService.findById(customer.getId());
-       assertNotNull(findCustomer);
+        assertNotNull(findCustomer);
     }
 
 
@@ -54,17 +50,16 @@ class CustomerServiceImplTest {
     void orderSave() throws ParseException {
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy", Locale.ENGLISH);
         String dateInString = "7-Jun-2013";
-
+       Customer customer1 = customerService.findById(2);
         Order order = new Order();
         SubSpecialist subSpecialist = new SubSpecialist();
         subSpecialist.setId(1);
         order.setAddress("teh");
-        order.setCustomer(customer);
+        order.setCustomer(customer1);
         order.setSuggestPrice(45d);
         order.setDescription("description");
         order.setDate(formatter.parse(dateInString));
         order.setSubSpecialist(subSpecialist);
-
         customerService.orderSave(order,customer);
 
         assertEquals(1,order.getId());
@@ -75,6 +70,19 @@ class CustomerServiceImplTest {
     void showOfferList(){
        List<Offer> offers = customerService.showOffer(1,"technician");
        offers.forEach(System.out::println);
-       //assertEquals();
+       assertEquals(3,offers);
+    }
+
+    @Test
+    void showOrderList(){
+      List<Order> orders =  customerService.showCustomerOrders(1);
+
+      assertNotNull(orders);
+    }
+
+    @Test
+    void orderStatusUpDate(){
+        Offer offer = offerService.findById(1);
+        customerService.selectOffer(offer);
     }
 }

@@ -10,4 +10,5 @@ import java.util.List;
 public interface OrderService extends BaseService<Order,Integer> {
     List<Order> findBySubSpecialistIn(List<SubSpecialist> subSpecialists);
     Integer upDateOrderStatus(OrderStatus status, Integer id);
+    List<Order> findByCustomerId(Integer id);
 }

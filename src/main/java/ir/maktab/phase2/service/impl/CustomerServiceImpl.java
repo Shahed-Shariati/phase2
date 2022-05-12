@@ -9,8 +9,6 @@ import ir.maktab.phase2.service.CustomerService;
 import ir.maktab.phase2.service.OfferService;
 import ir.maktab.phase2.service.OrderService;
 import ir.maktab.phase2.service.base.BaseServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -34,7 +32,7 @@ public class CustomerServiceImpl extends BaseServiceImpl<CustomerRepository, Cus
     @Transactional
     public Order orderSave(Order order,Customer customer) {
          order.setCustomer(customer);
-         order.setOrderStatus(OrderStatus.waitingExpertSelection);
+         order.setOrderStatus(OrderStatus.waitingTechnicianSelection);
          orderService.save(order);
          return order;
     }

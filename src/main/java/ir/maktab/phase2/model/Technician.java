@@ -59,7 +59,7 @@ public class Technician extends Person implements Comparator<Technician> {
     @Override
     public String toString() {
         return "Technician{" +
-                "score=" + "" +
+                "score=" + score +
                 ", comments=" + comments +
                 ", subSpecialists=" + subSpecialists +
 

@@ -1,9 +1,6 @@
 package ir.maktab.phase2.service.impl;
 
-import ir.maktab.phase2.model.Customer;
-import ir.maktab.phase2.model.Order;
-import ir.maktab.phase2.model.Role;
-import ir.maktab.phase2.model.SubSpecialist;
+import ir.maktab.phase2.model.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +10,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -46,9 +44,9 @@ class CustomerServiceImplTest {
         customer.setLastName("Faraji");
         customer.setRole(role);
 
-     customerService.save(customer);
-
-     assertEquals(1,customer.getId());
+        customerService.save(customer);
+        Customer findCustomer = customerService.findById(customer.getId());
+       assertNotNull(findCustomer);
     }
 
 
@@ -71,5 +69,12 @@ class CustomerServiceImplTest {
 
         assertEquals(1,order.getId());
 
+    }
+
+    @Test
+    void showOfferList(){
+       List<Offer> offers = customerService.showOffer(1,"technician");
+       offers.forEach(System.out::println);
+       //assertEquals();
     }
 }

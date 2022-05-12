@@ -8,10 +8,5 @@ import java.util.List;
 
 public interface OfferRepository extends JpaRepository<Offer,Integer> {
 
-     //List<Offer> findOfferByIdOrderByOrder();
-
-//    List<Offer> findAllByOrder_IdSo(Sort sort);
-    //    List<Offer> findAllByOrder_IdAndSort(Integer id,Sort sort);
-
-
-}
+      List<Offer> findOfferByOrder_Id(Integer order_id,Sort sort);
+   }

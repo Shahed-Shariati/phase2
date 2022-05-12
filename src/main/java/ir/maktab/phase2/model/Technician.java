@@ -4,12 +4,10 @@ import ir.maktab.phase2.exception.ImageSizeOutOfRange;
 import ir.maktab.phase2.model.enumeration.TechnicianStatus;
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.Formula;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
@@ -48,7 +46,7 @@ public class Technician extends Person implements Comparator<Technician> {
         super(integer, firstName, lastName, email, passWord, role, creationTime);
         this.comments = comments;
         this.subSpecialists = subSpecialists;
-        checkImageSize(image);
+        validateImageSize(image);
         this.technicianStatus = technicianStatus;
     }
 
@@ -75,7 +73,7 @@ public class Technician extends Person implements Comparator<Technician> {
         return -1;
     }
 
-    private void checkImageSize(byte[] image){
+    private void validateImageSize(byte[] image){
         if(image.length > 300000)
         {
             throw new ImageSizeOutOfRange();

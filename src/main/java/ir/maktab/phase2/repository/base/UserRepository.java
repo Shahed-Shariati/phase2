@@ -12,16 +12,4 @@ import java.util.List;
 
 public interface UserRepository extends JpaRepository<Person,Integer> {
 
-
-
-
-   /* @Query(value = "SELECT * , 0 AS clazz_ FROM person p WHERE p.email = :email",nativeQuery = true)
-    Person login(@Param("email") String email);
-*/
-
-    /*@Modifying
-    @Query("update Person p set p.email = :email where p.id = :id")
-    Integer upDatePassword(@Param("email") String email,@Param("id") Integer id);
-*/
-
 }

@@ -58,5 +58,10 @@ public class CustomerServiceImpl extends BaseServiceImpl<CustomerRepository, Cus
         return orderService.findByCustomerId(id);
     }
 
+    @Override
+    public void changePassword(String newPassword,Integer customerId) {
+        repository.upDatePassword(newPassword,customerId);
+    }
+
 
 }

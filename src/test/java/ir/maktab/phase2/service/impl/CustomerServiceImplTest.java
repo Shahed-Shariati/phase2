@@ -85,4 +85,11 @@ class CustomerServiceImplTest {
         Offer offer = offerService.findById(1);
         customerService.selectOffer(offer);
     }
+
+    @Test
+    void search(){
+       List<Customer> customers = customerService.search("c",null,"sh1");
+
+       assertEquals(1 ,customers.size());
+    }
 }

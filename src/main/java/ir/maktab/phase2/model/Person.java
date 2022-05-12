@@ -40,6 +40,7 @@ public abstract class Person extends BaseEntity<Integer> {
     public Person() {
     }
 
+
     public String getFirstName() {
         return firstName;
     }
@@ -86,5 +87,17 @@ public abstract class Person extends BaseEntity<Integer> {
 
     public void setCreationTime(LocalDateTime creationTime) {
         this.creationTime = creationTime;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", passWord='" + passWord + '\'' +
+                ", role=" + role +
+                ", creationTime=" + creationTime +
+                '}';
     }
 }

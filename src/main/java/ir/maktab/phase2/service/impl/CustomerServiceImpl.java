@@ -10,6 +10,7 @@ import ir.maktab.phase2.service.CustomerService;
 import ir.maktab.phase2.service.OfferService;
 import ir.maktab.phase2.service.OrderService;
 import ir.maktab.phase2.service.base.BaseServiceImpl;
+import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -66,6 +67,16 @@ public class CustomerServiceImpl extends BaseServiceImpl<CustomerRepository, Cus
         }else {
             throw new OldPasswordNotValid();
         }
+    }
+
+    @Override
+    public List<Customer> search(String firstName, String lastName, String email) {
+        Customer customer = new Customer();
+        customer.setFirstName(firstName);
+        customer.setLastName(lastName);
+        customer.setEmail(email);
+        Example<Customer> example = Example.of(customer);
+        return repository.findAll(example);
     }
 
 

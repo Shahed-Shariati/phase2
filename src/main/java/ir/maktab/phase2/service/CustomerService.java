@@ -13,5 +13,6 @@ public interface CustomerService extends BaseService<Customer,Integer> {
     void selectOffer(Offer offer);
     List<Order> showCustomerOrders(Integer id);
     void changePassword(String newPassword,String oldPassword,Customer customer);
+    List<Customer> search(String firstName,String lastName,String email);
 
 }

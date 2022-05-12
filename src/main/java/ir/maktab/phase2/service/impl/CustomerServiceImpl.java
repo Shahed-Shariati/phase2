@@ -1,5 +1,6 @@
 package ir.maktab.phase2.service.impl;
 
+import ir.maktab.phase2.exception.OldPasswordNotValid;
 import ir.maktab.phase2.model.Customer;
 import ir.maktab.phase2.model.Offer;
 import ir.maktab.phase2.model.Order;
@@ -59,8 +60,12 @@ public class CustomerServiceImpl extends BaseServiceImpl<CustomerRepository, Cus
     }
 
     @Override
-    public void changePassword(String newPassword,Integer customerId) {
-        repository.upDatePassword(newPassword,customerId);
+    public void changePassword(String newPassword,String oldPassword,Customer customer) {
+        if(customer.getPassWord().equals(oldPassword)) {
+            repository.upDatePassword(newPassword, customer.getId());
+        }else {
+            throw new OldPasswordNotValid();
+        }
     }
 
 

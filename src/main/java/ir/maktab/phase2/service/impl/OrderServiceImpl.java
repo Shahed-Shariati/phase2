@@ -26,4 +26,10 @@ public class OrderServiceImpl extends BaseServiceImpl<OrderRepository, Order,Int
     public List<Order> findBySubSpecialistIn(List<SubSpecialist> subSpecialists) {
         return orderRepository.findOrderBySubSpecialistIn(subSpecialists);
     }
+
+    @Override
+    public Integer upDateOrderStatus(OrderStatus status, Integer id) {
+        return orderRepository.upDateOrderStatus(status,id);
+    }
+
 }

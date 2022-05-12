@@ -1,23 +1,28 @@
 package ir.maktab.phase2.service.impl;
 
-import ir.maktab.phase2.model.Customer;
-import ir.maktab.phase2.model.Order;
-import ir.maktab.phase2.model.Role;
-import ir.maktab.phase2.model.Technician;
+import ir.maktab.phase2.exception.SuggestPriceUnderBasePrice;
+import ir.maktab.phase2.model.*;
+import ir.maktab.phase2.service.OrderService;
+import ir.maktab.phase2.service.TechnicianService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Locale;
 
 import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 class TechnicianServiceImplTest {
     @Autowired
-    private TechnicianServiceImpl technicianService;
+    private TechnicianService technicianService;
     private Technician technician;
+    @Autowired
+    private OrderService orderService;
 
 
     @Test
@@ -41,7 +46,7 @@ class TechnicianServiceImplTest {
 
         technicianService.save(technician);
 
-      //  assertEquals(1, technician.getId());
+      //  assertEquals(1, );
     }
     @Test
     void showTechnicianSubService(){
@@ -51,6 +56,24 @@ class TechnicianServiceImplTest {
         List<Order> orders = technicianService.showOrderByTechnicianSubSpecialist(technician1.getSubSpecialists());
         orders.forEach(System.out::println);
         assertEquals(2,orders.size());
+
+    }
+    @Test
+    void submitOffer() throws ParseException {
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy", Locale.ENGLISH);
+        String dateInString = "7-Jun-2013";
+        Technician technician1 = technicianService.findById(4);
+
+        Order order =  orderService.findById(1);
+        System.out.println(order);
+        Offer offer = new Offer();
+        offer.setOrder(order);
+        offer.setTechnician(technician1);
+        offer.setDuration("2 day");
+        offer.setStartTime(formatter.parse(dateInString));
+        offer.setSuggestPrice(300d);
+        assertThrows(SuggestPriceUnderBasePrice.class,() -> {technicianService.submitOffer(offer);});
+
 
     }
 }

@@ -9,10 +9,10 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
 
-@Entity
-@Table(name = "person")
-@Inheritance(strategy = InheritanceType.JOINED)
-public class Person extends BaseEntity<Integer> {
+
+@MappedSuperclass
+//@Inheritance(strategy = InheritanceType.JOINED)
+public abstract class Person extends BaseEntity<Integer> {
     @Column(columnDefinition = "varchar(100)")
     private String firstName;
     @Column(columnDefinition = "varchar(150)")

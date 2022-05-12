@@ -11,6 +11,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 public class Comment extends BaseEntity<Integer> {
+
     private String comment;
 
     @ManyToOne(cascade = CascadeType.ALL)

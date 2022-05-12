@@ -1,5 +1,6 @@
 package ir.maktab.phase2.service;
 
+import ir.maktab.phase2.model.Offer;
 import ir.maktab.phase2.model.Order;
 import ir.maktab.phase2.model.SubSpecialist;
 import ir.maktab.phase2.model.Technician;
@@ -11,4 +12,5 @@ import java.util.List;
 
 public interface TechnicianService extends BaseService<Technician,Integer> {
     List<Order> showOrderByTechnicianSubSpecialist(List<SubSpecialist> subSpecialists);
+    void submitOffer(Offer offer);
 }

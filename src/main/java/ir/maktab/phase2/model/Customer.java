@@ -10,8 +10,8 @@ import java.util.Set;
 @Entity
 @Getter
 @Setter
-@PrimaryKeyJoinColumn(name = "user_id")
-@Inheritance(strategy = InheritanceType.JOINED)
+//@PrimaryKeyJoinColumn(name = "user_id")
+//@Inheritance(strategy = InheritanceType.JOINED)
 public class Customer extends Person {
 @OneToOne
 private Wallet wallet;

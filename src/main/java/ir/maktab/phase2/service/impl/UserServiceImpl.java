@@ -19,13 +19,13 @@ public class UserServiceImpl  extends BaseServiceImpl<UserRepository,Person,Inte
 
     @Override
     public Person login(String firstName) {
-        return repository.login(firstName);
+        return null;
     }
 
 
     @Override
     @Transactional
     public void upDate(String email, Integer id) {
-        repository.upDatePassword(email,id);
+
     }
 }

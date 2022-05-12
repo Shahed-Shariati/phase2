@@ -19,7 +19,7 @@ public class Offer extends BaseEntity<Integer> {
 
     private String duration;
 
-    @ManyToOne(cascade = CascadeType.MERGE)
+    @ManyToOne(cascade = CascadeType.MERGE,fetch = FetchType.EAGER)
     @JoinColumn(name = "technician_id")
     private Technician technician;
 
@@ -43,6 +43,7 @@ public class Offer extends BaseEntity<Integer> {
     }
 
     public Offer() {
+
     }
 
     public Double getSuggestPrice() {

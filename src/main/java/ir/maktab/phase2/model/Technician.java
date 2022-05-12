@@ -9,19 +9,24 @@ import org.hibernate.annotations.Type;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
 
 @Entity
-@PrimaryKeyJoinColumn(name = "user_id")
+//@PrimaryKeyJoinColumn(name = "user_id")
 @Getter
 @Setter
-@Inheritance(strategy = InheritanceType.JOINED)
-public class Technician extends Person {
+//@Inheritance(strategy = InheritanceType.JOINED)
+public class Technician extends Person implements Comparator<Technician> {
 
   /*  @Formula("select avg(c.score) from Comment c where c.technician_id = id")
-    private Double score;
+
 */
+
+
+    private Double score;
+
     @OneToMany(mappedBy = "technician",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private Set<Comment> comments;
 
@@ -60,5 +65,14 @@ public class Technician extends Person {
 
                 ", technicianStatus=" + technicianStatus +
                 '}';
+    }
+
+    @Override
+    public int compare(Technician o1, Technician o2) {
+        if(o1.getScore() == o2.getScore())
+            return 0;
+        if(o1.getScore() > o2.getScore())
+            return 1;
+        return -1;
     }
 }

@@ -70,7 +70,7 @@ class CustomerServiceImplTest {
     void showOfferList(){
        List<Offer> offers = customerService.showOffer(1,"technician");
        offers.forEach(System.out::println);
-       assertEquals(3,offers);
+       assertEquals(3,offers.size());
     }
 
     @Test

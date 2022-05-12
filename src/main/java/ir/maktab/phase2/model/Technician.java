@@ -1,5 +1,6 @@
 package ir.maktab.phase2.model;
 
+import ir.maktab.phase2.exception.ImageSizeOutOfRange;
 import ir.maktab.phase2.model.enumeration.TechnicianStatus;
 import lombok.Getter;
 import lombok.Setter;
@@ -14,15 +15,13 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
-//@PrimaryKeyJoinColumn(name = "user_id")
+
 @Getter
 @Setter
-//@Inheritance(strategy = InheritanceType.JOINED)
+
 public class Technician extends Person implements Comparator<Technician> {
 
-  /*  @Formula("select avg(c.score) from Comment c where c.technician_id = id")
 
-*/
 
 
     private Double score;
@@ -49,7 +48,7 @@ public class Technician extends Person implements Comparator<Technician> {
         super(integer, firstName, lastName, email, passWord, role, creationTime);
         this.comments = comments;
         this.subSpecialists = subSpecialists;
-        this.image = image;
+        checkImageSize(image);
         this.technicianStatus = technicianStatus;
     }
 
@@ -74,5 +73,13 @@ public class Technician extends Person implements Comparator<Technician> {
         if(o1.getScore() > o2.getScore())
             return 1;
         return -1;
+    }
+
+    private void checkImageSize(byte[] image){
+        if(image.length > 300000)
+        {
+            throw new ImageSizeOutOfRange();
+        }
+        this.image = image;
     }
 }

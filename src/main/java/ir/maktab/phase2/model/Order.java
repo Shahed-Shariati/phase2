@@ -17,11 +17,12 @@ import java.util.Set;
 @Table(name = "orders")
 
 public class Order extends BaseEntity<Integer> {
-    @OneToOne(cascade = CascadeType.ALL)
+
+    @OneToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
-  @ManyToOne(cascade = CascadeType.ALL)
+  @ManyToOne(cascade = CascadeType.MERGE)
   @JoinColumn(name = "sub_service_id")
   private SubSpecialist subSpecialist;
 

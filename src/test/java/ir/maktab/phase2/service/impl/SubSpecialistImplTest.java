@@ -16,7 +16,7 @@ private SubSpecialistService specialistService;
     @Test
     void showSubSpecial() {
        List<SubSpecialist> subSpecialists = specialistService.showSubSpecial(1);
-      
+
        assertNotNull(subSpecialists);
     }
 }

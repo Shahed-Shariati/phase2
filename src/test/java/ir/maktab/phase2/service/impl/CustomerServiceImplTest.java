@@ -49,12 +49,12 @@ class CustomerServiceImplTest {
     @Test
     void orderSave() throws ParseException {
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy", Locale.ENGLISH);
-        String dateInString = "7-Jun-2013";
-       Customer customer1 = customerService.findById(2);
+        String dateInString = "7-Jun-2022";
+        Customer customer1 = customerService.findById(1);
         Order order = new Order();
         SubSpecialist subSpecialist = new SubSpecialist();
         subSpecialist.setId(1);
-        order.setAddress("teh");
+        order.setAddress("san");
         order.setCustomer(customer1);
         order.setSuggestPrice(45d);
         order.setDescription("description");
@@ -62,7 +62,7 @@ class CustomerServiceImplTest {
         order.setSubSpecialist(subSpecialist);
         customerService.orderSave(order,customer);
 
-        assertEquals(1,order.getId());
+        assertNotNull(order.getId());
 
     }
 

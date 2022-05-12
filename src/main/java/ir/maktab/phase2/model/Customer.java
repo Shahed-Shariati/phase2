@@ -10,8 +10,7 @@ import java.util.Set;
 @Entity
 @Getter
 @Setter
-//@PrimaryKeyJoinColumn(name = "user_id")
-//@Inheritance(strategy = InheritanceType.JOINED)
+
 public class Customer extends Person {
 @OneToOne
 private Wallet wallet;
@@ -20,9 +19,10 @@ private Wallet wallet;
 private Set<Order> orders;
 
 
-    public Customer(Integer integer, String firstName, String lastName, String email, String passWord, Role role, LocalDateTime creationTime, Wallet wallet) {
+    public Customer(Integer integer, String firstName, String lastName, String email, String passWord, Role role, LocalDateTime creationTime, Wallet wallet, Set<Order> orders) {
         super(integer, firstName, lastName, email, passWord, role, creationTime);
         this.wallet = wallet;
+        this.orders = orders;
     }
 
     public Customer() {

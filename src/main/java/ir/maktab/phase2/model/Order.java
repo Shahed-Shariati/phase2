@@ -27,6 +27,7 @@ public class Order extends BaseEntity<Integer> {
   private SubSpecialist subSpecialist;
 
    @Temporal(TemporalType.DATE)
+   @CreationTimestamp
    private Date date;
 
    private String description;
